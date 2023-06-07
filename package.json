@@ -1,0 +1,17 @@
+{
+  "name": "nodejs-mysql",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "test.js",
+    "dev": "nodemon index.js" 
+  },
+  "author": "dinhle",
+  "license": "ISC",
+  "dependencies": {
+    "mysql2": "^3.2.4",
+    "nodemon": "^2.0.22",
+    "sequelize": "^6.31.0"
+  }
+}

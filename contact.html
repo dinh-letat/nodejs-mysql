@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CDN FONTAWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"
+        integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+
+    <title>Contact</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            font-family: 'Quicksand', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* header */
+        header .top-header {
+            font-size: 13px;
+        }
+
+        header .top-header {
+            border-bottom: 1px solid rgba(128, 128, 128, 0.196);
+        }
+
+        header .top-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header .intro a {
+            text-decoration: none;
+            color: black;
+            padding-right: 10px;
+        }
+
+        header .intro a:hover {
+            color: rgb(68, 89, 230);
+            transition: ease-in-out 0.25s;
+        }
+
+        header .currency {
+            border-left: 1px solid rgba(128, 128, 128, 0.196);
+            padding-left: 20px;
+
+            padding: 10px 0 10px 10px;
+        }
+
+        header .currency select {
+            outline: none;
+            border: none;
+            padding-left: 20px;
+        }
+
+
+
+        /* main header */
+        .main-header {
+            border-bottom: 1px solid rgba(128, 128, 128, 0.196);
+            padding: 20px 0px 10px 0px;
+        }
+
+        .main-header .user-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .main-header .user-header .search input {
+            width: 800px;
+            padding: 15px 10px;
+            outline: none;
+            border: none;
+            border-radius: 10px;
+            background-color: rgba(128, 128, 128, 0.086);
+        }
+
+        .main-header .user-header .search i {
+            margin-left: -30px;
+        }
+
+        .main-header .header-button,
+        .main-header .header-button a {
+            display: flex;
+            font-size: 20px;
+            justify-content: space-between;
+            align-items: center;
+            padding-left: 20px;
+            text-decoration: none;
+        }
+
+        .main-header .header-button i {
+            padding-left: 15px;
+        }
+
+        /* header-menu */
+        .header-menu {
+            margin-top: 20px;
+        }
+
+        .header-menu .container,
+        .header-menu .listProductButton {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .header-menu ul li a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .listProductButton {
+            width: 250px;
+            color: orange;
+            background-color: rgba(24, 25, 25, 0.8);
+            padding: 10px 20px;
+            border-radius: 20px;
+            border: none;
+            outline: none;
+        }
+
+        .listProductButton span {
+            padding: 0 20px;
+        }
+
+        .listProductButton:active {
+            color: rgb(204, 140, 21);
+        }
+
+        .product-list {
+            margin: 50px 0;
+        }
+
+        .product-list .list {
+            display: grid;
+            gap: 30px;
+            grid-template-columns: auto auto auto auto;
+        }
+
+        .product-list .list .item {
+            border: 1px solid rgba(128, 128, 128, 0.315);
+            box-shadow: rgb(128, 128, 128) 15px 15px 15px;
+            text-align: center;
+            padding: 15px 0px;
+            width: 300px;
+            line-height: 30px;
+        }
+
+        .product-list .list button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            color: white;
+            background-color: orange;
+        }
+
+        .siteMenu ul li:nth-child(2) {
+            position: relative;
+        }
+
+        /* .siteMenu ul li:nth-child(2):active {
+    color: white;
+    background-color: black;
+} */
+
+
+
+        /* header-menu site-menu */
+        .header-menu .siteMenu ul {
+            display: flex;
+            list-style: none;
+        }
+
+        .header-menu .siteMenu ul li {
+            margin-left: 30px;
+            list-style: none;
+        }
+
+        .dropdown {
+            position: absolute;
+            width: 250px;
+            box-shadow: var(--shadow);
+            border-radius: var(--radius);
+            margin-top: 0.3rem;
+            background: white;
+
+            visibility: hidden;
+            opacity: 0;
+            transform: translateY(0.5rem);
+            transition: ease-in-out 0.35s;
+        }
+
+        .dropdown a {
+            display: flex;
+            align-items: center;
+            column-gap: var(--gap);
+            padding: 0.8rem 1rem;
+            text-decoration: none;
+            color: black;
+        }
+
+        .dropdown a:hover {
+            background-color: var(--color);
+            color: rgb(234, 14, 14);
+        }
+
+        .show {
+            visibility: visible;
+            opacity: 1;
+            transform: translateY(0rem);
+        }
+
+        .arrow {
+            transform: rotate(180deg);
+            transition: 0.2s ease;
+        }
+
+        .panel {
+            border-radius: 20px;
+            position: absolute;
+            width: 250px;
+            margin-top: 20px;
+            padding: 20px;
+            display: none;
+            line-height: 50px;
+            background-color: white;
+            border: solid 1px #c3c3c3;
+            box-shadow: 10px 10px 10px;
+            font-size: 20px;
+            z-index: 10;
+        }
+
+        .panel ul {
+            list-style: none;
+        }
+
+        .panel ul li {
+            border-bottom: 1px solid rgba(128, 128, 128, 0.398);
+        }
+
+        .panel ul li:nth-child(5) {
+            border: none;
+        }
+
+        .panel ul li a:hover {
+            color: rgba(16, 149, 183, 0.696);
+        }
+
+
+
+
+        /* main */
+        .main .container {
+            display: flex;
+            justify-content: space-between;
+            line-height: 30px;
+        }
+
+        .main .contact {
+            width: 40%;
+        }
+
+        .main .contact div {
+            margin-top: 30px;
+        }
+
+        .main .contact h2 {
+            padding: 30px 0;
+            border-bottom: 2px solid black;
+        }
+
+        .main .contact p {
+            color: grey;
+        }
+
+        .main .contact span {
+            color: black;
+            font-weight: 600;
+        }
+
+
+
+        .main .form {
+            width: 40%;
+        }
+
+        .main .form h2 {
+            padding: 30px 0;
+            border-bottom: 2px solid black;
+        }
+
+        .main .form form input {
+            margin: 10px 0;
+            width: 100%;
+            background-color: rgba(184, 183, 183, 0.279);
+            outline: none;
+            padding: 10px 15px;
+            border: none;
+        }
+
+        .main .form form textarea{
+            margin: 10px 0;
+            width: 100%;
+            background-color: rgba(184, 183, 183, 0.279);
+            outline: none;
+            padding: 10px 15px;
+            border: none;
+        }
+        .main .form form span{
+            font-size: 15px;
+            margin: 10px 0;
+        }
+        .main .form button {
+            padding: 10px 15px;
+            font-weight: 700;
+            color: white;
+            background-color: rgb(31, 30, 30);
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+
+        /* footer */
+        /* footer */
+        footer .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 10px;
+        }
+
+        footer .container .icon {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        footer .container .icon i {
+            margin-right: 10px;
+        }
+
+        footer .footer-iconboxes {
+            background-color: #f7f8fd;
+            display: flex;
+            justify-content: space-between;
+            font-size: 15px;
+        }
+
+        /* footer-main */
+        footer .container {
+            width: 1200px;
+            margin: 0 auto;
+            padding: 30px 0;
+        }
+
+        footer .content {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            line-height: 30px;
+        }
+
+        footer .content ul {
+            width: 20%;
+        }
+
+        footer .content ul:first-child {
+            width: 40%;
+        }
+
+        footer .content ul li {
+            list-style: none;
+        }
+
+        footer .content ul li a {
+            text-decoration: none;
+            color: black;
+        }
+
+        footer .content ul li a:hover {
+            color: rgb(68, 89, 230);
+            transition: ease-in-out 0.25s;
+        }
+
+        footer .footer-bottom {
+            border-top: 1px solid rgba(128, 128, 128, 0.309);
+        }
+
+        footer .footer-bottom span {
+            color: rgb(127, 180, 255);
+        }
+
+        footer .footer-bottom p {
+            color: #a2a4b7;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="top-header">
+            <div class="container">
+                <div class="intro">
+                    <a href="/index.html">Giới thiệu</a>
+                    <a href="/pages/signin.html">Đăng nhập</a>
+                    <a href="/pages/signup.html">Đăng ký</a>
+                </div>
+                <div class="currency">
+                    <select name="language" id="">
+                        <option value="Vietnamese">Vietnamese</option>
+                        <option value="English">English</option>
+                    </select>
+                    <select name="currency" id="">
+                        <option value="dollard">Dollard</option>
+                        <option value="vnd">VND</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="main-header">
+            <div class="container">
+                <div class="user-header">
+                    <div class="logo">
+                        <a href="index.html"><img src="/assets/img/Twitter-logo.svg.png" width="60px" alt=""></a>
+                    </div>
+                    <div class="search">
+                        <input type="text" placeholder="Tìm sản phẩm">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                    </div>
+                    <div class="header-button">
+                        <a href="/pages/user1.html">
+                            <div>
+                                <i class="fa-solid fa-user" style="color: #aab2c0;"></i>
+                            </div>
+                        </a>
+                        <a href="/pages/cart.html">
+                            <div>
+                                <span>1.469.990 đ</span>
+                            </div>
+                            <div>
+                                <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="header-menu">
+                    <div class="container">
+                        <div class="listProduct">
+                            <div class="listProductButton">
+                                <i class="fa-solid fa-bars"></i>
+                                <span id="flip">DANH MỤC SẢN PHẨM</span>
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </div>
+                            <div class="panel" id="panel">
+                                <ul>
+                                    <li>
+                                        <a href="/pages/product.html">Tất cả sản phẩm</a>
+                                    </li>
+                                    <li>
+                                        <a href="">Quần & áo</a>
+                                    </li>
+                                    <li>
+                                        <a href="">Giày & dép</a>
+                                    </li>
+                                    <li>
+                                        <a href="pages/accessories.html">Phụ kiện</a>
+                                    </li>
+                                    <li>
+                                        <a href="">GIFT</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <nav class="siteMenu">
+                            <ul>
+                                <li><a href="">TRANG CHỦ</a></li>
+                                <li class="liToogle">
+                                    <a class="btn" id="btn">
+                                        MUA SẮM
+                                        <i class="bx bx-chevron-down" id="arrow"></i>
+                                    </a>
+
+                                    <div class="dropdown" id="dropdown">
+                                        <a href="#create">
+                                            <i class="bx bx-plus-circle"></i>
+                                            QUẦN
+                                        </a>
+                                        <a href="#draft">
+                                            <i class="bx bx-book"></i>
+                                            All Drafts
+                                        </a>
+                                        <a href="#move">
+                                            <i class="bx bx-folder"></i>
+                                            Move To
+                                        </a>
+                                        <a href="#profile">
+                                            <i class="bx bx-user"></i>
+                                            Profile Settings
+                                        </a>
+                                        <a href="#notification">
+                                            <i class="bx bx-bell"></i>
+                                            Notification
+                                        </a>
+                                        <a href="#settings">
+                                            <i class="bx bx-cog"></i>
+                                            Settings
+                                        </a>
+                                    </div>
+                                </li>
+                                <li><a href="">LIÊN HỆ</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="main">
+        <div class="container">
+            <div class="contact">
+                <h2>Liên hệ</h2>
+                <div>
+                    <p>Địa chỉ chúng tôi</p>
+                    <span>Q.Bình Thạnh, Hồ Chí Minh</span>
+                </div>
+                <div>
+                    <p>Email chúng tôi</p>
+                    <span>dinhlt2701@gmail.com</span>
+                </div>
+                <div>
+                    <p>Điện thoại</p>
+                    <span>0978568445 </span>
+                </div>
+                <div>
+                    <p>Thời gian làm việc</p>
+                    <span>Thứ 2 đến chủ nhật: 9:00 - 21:00</span>
+                </div>
+            </div>
+            <div class="form">
+                <h2>Gửi thắc mắc cho chúng tôi</h2>
+                <form action="">
+                    <input type="text" placeholder="Tên của bạn">
+                    <br>
+
+                    <input type="email" placeholder="Email của bạn">
+                    <input type="text" placeholder="Số điện thoại của bạn">
+                    <br>
+
+                    <textarea name="" id="" cols="30" rows="10" placeholder="Nội dung"></textarea> <br>
+                    <span>This site is protected by reCAPTCHA and the Google <a href="">Privacy Policy</a> and <a
+                            href="">Terms of Service</a> apply.
+                    </span>
+                    <br>
+                    <button>GỬI CHO CHÚNG TÔI</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+    <footer class="footer">
+        <div class="footer-iconboxes">
+            <div class="container">
+                <div class="icon">
+                    <i class="fa-solid fa-shirt"></i>
+                    <p>Chất lượng sản phẩm hoàn thiện</p>
+                </div> |
+                <div class="icon">
+                    <i class="fa-solid fa-truck"></i>
+                    <p>Giao hàng nhanh chóng</p>
+                </div> |
+                <div class="icon">
+                    <i class="fa-solid fa-percent"></i>
+                    <p>Chiết khấu giảm giá cao</p>
+                </div> |
+                <div class="icon">
+                    <i class="fa-solid fa-dollar-sign"></i>
+                    <p>Giá tốt nhất trên thị trường</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-main">
+            <div class="container">
+                <div class="content">
+                    <ul>
+                        <h3>Thông tin liên hệ</h3>
+                        <li><i class="fa-solid fa-location-arrow"></i>
+                            <span>Địa chỉ: Bình Thạnh, Tp.Hồ Chí Minh</span>
+                        </li>
+                        <li><i class="fa-solid fa-phone"></i>
+                            <span>Số điện thoại: <a href="">0978568445</a></span>
+                        </li>
+                        <li><i class="fa-solid fa-phone"></i>
+                            <span>Số điện thoại 2: <a href="">0987654321</a></span>
+                        </li>
+                        <li><i class="fa-brands fa-facebook"></i>
+                            <span>Fanpage: <a href="">May mặc Lê Tất Định</a></span>
+                        </li>
+                        <li><i class="fa-solid fa-envelope-open-text"></i>
+                            <span>Email: <a href="">dinhle2701@gmail.com</a></span>
+                        </li>
+                    </ul>
+                    <ul>
+                        <h3>Hỗ trợ khách hàng</h3>
+                        <li><a href="">Đăng ký</a></li>
+                        <li><a href="">Đăng nhập</a></li>
+                        <li><a href="">Tuyển dụng</a></li>
+                        <li><a href="">Liên hệ sỉ lẻ</a></li>
+                        <li><a href="">Giới thiệu</a></li>
+                        <li><a href="">Liên hệ</a></li>
+                    </ul>
+                    <ul>
+                        <h3>Chính sách</h3>
+                        <li><a href="">Chính sách bảo hành </a></li>
+                        <li><a href="">Chính sách bảo mật</a></li>
+                        <li><a href="">Chính sách vận chuyển</a></li>
+                        <li><a href="">Chính sách thanh toán</a></li>
+                        <li><a href="">Chính sách đổi trả</a></li>
+                        <li><a href="">Chính sách xử lý khiếu nại</a></li>
+                    </ul>
+                    <ul>
+                        <h3>Hotline hỗ trợ</h3>
+                        <li><i class="fa-solid fa-square-phone-flip"></i>
+                            <span>Hotline 1: <a href="">0987654321</a></span>
+                        </li>
+                        <li><i class="fa-solid fa-square-phone-flip"></i>
+                            <span>Hotline 2: <a href="">0987654321</a></span>
+                        </li>
+                        <h3>Phương thức thanh toán</h3>
+                        <img width="250px" src="/assets/img/payment-methods.jpg" alt="">
+                        <div></div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="footer-bottom">
+            <div class="container">
+                <p>2021 © Đã đăng ký bản quyền, được cung cấp bởi <span>Lê Tất Định</span></p>
+                <p>Chính sách web phân quyền</p> <br>
+
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        $(document).ready(function () {
+            $(".listProductButton").click(function () {
+                $(".panel").slideToggle("slow");
+            });
+        });
+
+        $(document).ready(function () {
+            $(".liToogle").click(function () {
+                $(".super-menu").slideToggle("slow");
+            });
+        });
+
+        const dropdownBtn = document.getElementById("btn");
+        const dropdownMenu = document.getElementById("dropdown");
+        const toggleArrow = document.getElementById("arrow");
+
+        // Toggle dropdown function
+        const toggleDropdown = function () {
+            dropdownMenu.classList.toggle("show");
+            toggleArrow.classList.toggle("arrow");
+        };
+
+        // Toggle dropdown open/close when dropdown button is clicked
+        dropdownBtn.addEventListener("click", function (e) {
+            e.stopPropagation();
+            toggleDropdown();
+        });
+
+        // Close dropdown when dom element is clicked
+        document.documentElement.addEventListener("click", function () {
+            if (dropdownMenu.classList.contains("show")) {
+                toggleDropdown();
+            }
+        });
+
+
+        AOS.init();
+
+    </script>
+</body>
+
+</html>
